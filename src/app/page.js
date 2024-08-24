@@ -3,6 +3,33 @@
 import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/fetchData');
+        const result = await response.json();
+        
+        if (result.status) {
+          setData(result.data);
+        } else {
+          setError(result.message);
+        }
+      } catch (err) {
+        setError("An error occurred while fetching data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <p>Loading...<br/>Please wait...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div>
@@ -18,12 +45,14 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>0x0fff</td>
-            <td>123</td>
-            <td>0xe12j3</td>
-          </tr>
+          {data.map((item, index) => (
+            <tr key={item.id}>
+              <td>{index + 1}</td>
+              <td>{item.id}</td>
+              <td>{item.blockNumber}</td>
+              <td>{item.account}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <style jsx>{`

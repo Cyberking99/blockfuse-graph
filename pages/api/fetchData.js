@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export default async function handler(req, res) {
-    const url = process.env.NEXT_PUBLIC_API_URL;
-    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const url = process.env.SUBGRAPH_API_URL;
+    const apiKey = process.env.SUBGRAPH_API_KEY;
   
     const query = `
       query MyQuery {
@@ -30,7 +30,8 @@ export default async function handler(req, res) {
     } catch (error) {
       res.status(500).json({
         status: false,
-        message: "An error occurred"
+        message: "An error occurred",
+        error: error
       });
     }
   }
