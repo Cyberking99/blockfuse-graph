@@ -1,0 +1,17 @@
+{
+  "mainnet": {
+    "TetherToken": {
+      "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "startBlock": 4634748
+    },
+    "TRX": {
+      "address": "0x50327c6c5a14DCaDE707ABad2E27eB517df87AB5"
+    },
+    "BNB": {
+      "address": "0xB8c77482e45F1F44dE1745F52C74426C631bDD52"
+    },
+    "TokenMintERC20Token": {
+      "address": "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE"
+    }
+  }
+}

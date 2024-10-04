@@ -1,17 +1,18 @@
 {
-  "name": "blockfuse-graph",
-  "version": "0.1.0",
-  "private": true,
+  "name": "token-lens",
+  "license": "UNLICENSED",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ token-lens",
+    "create-local": "graph create --node http://localhost:8020/ token-lens",
+    "remove-local": "graph remove --node http://localhost:8020/ token-lens",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 token-lens",
+    "test": "graph test"
   },
   "dependencies": {
-    "axios": "^1.7.5",
-    "next": "14.2.6",
-    "react": "^18",
-    "react-dom": "^18"
-  }
+    "@graphprotocol/graph-cli": "0.85.0",
+    "@graphprotocol/graph-ts": "0.32.0"
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
 }
